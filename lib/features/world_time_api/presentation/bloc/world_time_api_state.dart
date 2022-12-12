@@ -13,6 +13,7 @@ class Empty extends WorldTimeApiState {}
 // when data is being fecthed from the api
 class Loading extends WorldTimeApiState {}
 
+
 // when the data has been fetched and loaded 
 class Loaded extends WorldTimeApiState {
   final WorldTime worldTime;
