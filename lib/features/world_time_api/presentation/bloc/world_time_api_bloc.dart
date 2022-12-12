@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:world_time_api_tdd_clean_arch/features/world_time_api/domain/entities/world_time.dart';
