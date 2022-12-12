@@ -8,7 +8,7 @@ part 'world_time_api_state.dart';
 class WorldTimeApiBloc extends Bloc<WorldTimeApiEvent, WorldTimeApiState> {
   WorldTimeApiBloc() : super(Empty()) {
     on<WorldTimeApiEvent>((event, emit) {
-      // TODO: implement event handler
+      
     });
   }
 }
