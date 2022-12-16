@@ -7,8 +7,8 @@ abstract class WorldTimeApiEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class getTime extends WorldTimeApiEvent {
+class GetTime extends WorldTimeApiEvent {
   final timezone;
 
-  getTime(this.timezone);
+  GetTime(this.timezone);
 }
