@@ -5,7 +5,7 @@ import 'package:world_time_api_tdd_clean_arch/core/errors/exceptions.dart';
 import 'package:world_time_api_tdd_clean_arch/features/world_time_api/data/models/world_time_model.dart';
 
 class WorldTimeLocalDataSource {
-  /// gets the cached [NumberTriviaModel] which was gotten last time there
+  /// gets the cached [WorldTimeModel] which was gotten last time there
   /// was an internet connection.
   ///
   /// Throws [CacheException] if no cached data found
