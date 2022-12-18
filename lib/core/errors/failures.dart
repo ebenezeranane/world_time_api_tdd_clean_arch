@@ -1,7 +1,12 @@
 import 'package:equatable/equatable.dart';
 
 class Failures extends Equatable {
-  Failures([List props = const <dynamic>[]]) : super(props);
+  
+  Failures([List props = const <dynamic>[]]);
+  
+  @override
+  // TODO: implement props
+  List<Object> get props => [props];
 }
 
 

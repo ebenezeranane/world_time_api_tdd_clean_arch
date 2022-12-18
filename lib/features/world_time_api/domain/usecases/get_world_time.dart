@@ -19,5 +19,9 @@ class GetWorldTime implements UseCase<WorldTime,Params> {
 
 class Params extends Equatable {
   final String timezone;
-  Params({this.timezone}) : super([timezone]);
+  const Params({this.timezone}) ;
+  
+  @override
+  // TODO: implement props
+  List<Object> get props => [timezone];
 }

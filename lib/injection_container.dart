@@ -10,8 +10,10 @@ import 'package:world_time_api_tdd_clean_arch/features/world_time_api/domain/rep
 import 'package:world_time_api_tdd_clean_arch/features/world_time_api/domain/usecases/get_world_time.dart';
 import 'package:world_time_api_tdd_clean_arch/features/world_time_api/presentation/bloc/world_time_api_bloc.dart';
 
-void init() async {
-  final sl = GetIt.instance;
+
+final sl = GetIt.instance;
+
+Future<void> init() async {
 
   //Features
   //Bloc

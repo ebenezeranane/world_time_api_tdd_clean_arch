@@ -16,9 +16,7 @@ class WorldTimePlaces  extends StatelessWidget {
 
   ];
 
-  void updateTime(index) async {
-
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +34,7 @@ class WorldTimePlaces  extends StatelessWidget {
             return Card(
               child: ListTile(
                 onTap: (){
-                  updateTime(index);
+                
                 },
                 title: Text(locations[index].location),
                 leading: CircleAvatar(

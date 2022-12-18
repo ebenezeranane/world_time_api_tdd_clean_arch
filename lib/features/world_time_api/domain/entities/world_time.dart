@@ -6,5 +6,9 @@ class WorldTime extends Equatable {
   final String location;
   final String flag;
 
-  WorldTime({this.timezone, this.datetime,this.flag,this.location}) : super([timezone, datetime,timezone,flag]);
+  WorldTime({this.timezone, this.datetime,this.flag,this.location}) ;
+  
+  @override
+  // TODO: implement props
+  List<Object> get props =>[timezone,datetime,flag,location];
 }
