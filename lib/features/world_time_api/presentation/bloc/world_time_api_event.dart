@@ -11,4 +11,7 @@ class GetTime extends WorldTimeApiEvent {
   final timezone;
 
   GetTime(this.timezone);
+
+   @override
+  List<Object> get props => [timezone];
 }

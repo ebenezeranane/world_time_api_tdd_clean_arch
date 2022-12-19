@@ -13,27 +13,43 @@ class WorldTimeHome extends StatelessWidget {
   Widget build(BuildContext context) {
     String bgImage = 'night.jpg';
 
-    return Scaffold(
-      body: BlocProvider(
-        create: (BuildContext context) {
-          (_) => sl<WorldTimeApiBloc>();
-        },
-        child: BlocBuilder<WorldTimeApiBloc, WorldTimeApiState>(
-            bloc: WorldTimeApiBloc(),
-            builder: (BuildContext context, state) {
-              if (state is Empty) {
-                return Container();
-              } else if (state is Loading) {
-                return const Loader();
-              } else if (state is Loaded) {
-                return DisplayTime(
-                    bgImage: bgImage, displayTime: state.worldTime);
-              } else {
-                return Container();
-              }
-            }),
+    return BlocProvider(
+      create: (BuildContext context)=>sl<WorldTimeApiBloc>(),
+      child: Scaffold(
+        body: Row(
+          children: [
+            Center(
+              child: ElevatedButton(
+                child: Text("Here"),
+                onPressed: () {
+                  dispatch(context);
+                },
+              ),
+            ),
+            BlocBuilder<WorldTimeApiBloc, WorldTimeApiState>(
+                bloc: WorldTimeApiBloc(),
+                builder: (BuildContext context, state) {
+                  if (state is Empty) {
+                    return Container(child: Text("Empty"),);
+                  } else if (state is Loading) {
+                   return Container(child: Text("Loading"),);
+    
+                  } else if (state is Loaded) {
+                    return DisplayTime(
+                        bgImage: bgImage, displayTime: state.worldTime);
+                  } else {
+                    return Container();
+                  }
+                }),
+          ],
+        ),
       ),
     );
+  }
+
+  void dispatch(context){
+  BlocProvider.of<WorldTimeApiBloc>(context)
+              .add(GetTime("Africa/Accra"));
   }
 }
 
@@ -67,7 +83,7 @@ class DisplayTime extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children:  <Widget>[
+              children: <Widget>[
                 // ignore: prefer_const_constructors
                 Text(
                   displayTime.location,
@@ -79,8 +95,8 @@ class DisplayTime extends StatelessWidget {
             const SizedBox(height: 20.0),
             Text(
               displayTime.datetime,
-              style:
-                  const TextStyle(fontSize: 80, letterSpacing: 2, color: Colors.grey),
+              style: const TextStyle(
+                  fontSize: 80, letterSpacing: 2, color: Colors.grey),
             )
           ],
         ),

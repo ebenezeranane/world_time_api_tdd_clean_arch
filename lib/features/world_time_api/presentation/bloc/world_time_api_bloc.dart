@@ -17,7 +17,7 @@ class WorldTimeApiBloc extends Bloc<WorldTimeApiEvent, WorldTimeApiState> {
         super(Empty()) {
     on<WorldTimeApiEvent>((event, emit) {
       if (event is GetTime) {
-        (timezone) async* {
+        (timezone) async {
           emit(Loading());
           final failureOrWorldTime =
               await getWorldTime(Params(timezone: timezone));
