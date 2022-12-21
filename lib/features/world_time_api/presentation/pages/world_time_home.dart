@@ -13,43 +13,35 @@ class WorldTimeHome extends StatelessWidget {
   Widget build(BuildContext context) {
     String bgImage = 'night.jpg';
 
-    return BlocProvider(
-      create: (BuildContext context)=>sl<WorldTimeApiBloc>(),
-      child: Scaffold(
-        body: Row(
-          children: [
-            Center(
-              child: ElevatedButton(
+    return Scaffold(
+      body: Row(
+        children: [
+          Center(
+            child: ElevatedButton(
                 child: Text("Here"),
                 onPressed: () {
-                  dispatch(context);
-                },
-              ),
-            ),
-            BlocBuilder<WorldTimeApiBloc, WorldTimeApiState>(
-                bloc: WorldTimeApiBloc(),
-                builder: (BuildContext context, state) {
-                  if (state is Empty) {
-                    return Container(child: Text("Empty"),);
-                  } else if (state is Loading) {
-                   return Container(child: Text("Loading"),);
-    
-                  } else if (state is Loaded) {
-                    return DisplayTime(
-                        bgImage: bgImage, displayTime: state.worldTime);
-                  } else {
-                    return Container();
-                  }
+                  BlocProvider.of<WorldTimeApiBloc>(context)
+                      .add(GetTime("Africa/Accra"));
                 }),
-          ],
-        ),
+          ),
+          BlocBuilder<WorldTimeApiBloc, WorldTimeApiState>(
+              builder: (BuildContext context, state) {
+            if (state is Empty) {
+              return Container(
+                child: Text("Empty"),
+              );
+            } else if (state is Loading) {
+              return Center(child: const CircularProgressIndicator());
+              } else if (state is Loaded) {
+                return DisplayTime(
+                    bgImage: bgImage, displayTime: state.worldTime);
+            } else {
+              return Container();
+            }
+          }),
+        ],
       ),
     );
-  }
-
-  void dispatch(context){
-  BlocProvider.of<WorldTimeApiBloc>(context)
-              .add(GetTime("Africa/Accra"));
   }
 }
 

@@ -8,5 +8,5 @@ import '../../../../core/errors/failures.dart';
 
 abstract class GetWorldTimeRepository{
 
-  Future<Either<Failures,WorldTime>> getTime(String url);
+  Future<Either<Failures,WorldTime>> getTime(String timezone);
 }

@@ -13,17 +13,23 @@ class WorldTimeApiBloc extends Bloc<WorldTimeApiEvent, WorldTimeApiState> {
 
   WorldTimeApiBloc({GetWorldTime getWorldTime})
       // : assert(getWorldTime != null),
-        :getWorldTime = getWorldTime,
+      : getWorldTime = getWorldTime,
         super(Empty()) {
-    on<WorldTimeApiEvent>((event, emit) {
+    on<WorldTimeApiEvent>((event, emit) async {
       if (event is GetTime) {
-        (timezone) async {
-          emit(Loading());
-          final failureOrWorldTime =
+        emit(Loading());
+
+        final timezone = event.timezone;
+        final failureOrWorldTime =
               await getWorldTime(Params(timezone: timezone));
-          failureOrWorldTime.fold((failure) => Error(message:failure is CacheFailure ? "Cache Failure": "Server Failure"), 
-          (time) => Loaded(worldTime: time));
-        };
+              failureOrWorldTime.fold(
+              (failure) => emit(Error(
+                  message: failure is CacheFailure
+                      ? "Cache Failure"
+                      : "Server Failure")),
+              (time) => emit(Loaded(worldTime: time)));
+
+        
       }
     });
   }
