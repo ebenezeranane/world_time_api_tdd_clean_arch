@@ -12,8 +12,8 @@ class WorldTimeApiBloc extends Bloc<WorldTimeApiEvent, WorldTimeApiState> {
   final GetWorldTime getWorldTime;
 
   WorldTimeApiBloc({GetWorldTime getWorldTime})
-      // : assert(getWorldTime != null),
-      : getWorldTime = getWorldTime,
+       : assert(getWorldTime != null),
+       getWorldTime = getWorldTime,
         super(Empty()) {
     on<WorldTimeApiEvent>((event, emit) async {
       if (event is GetTime) {

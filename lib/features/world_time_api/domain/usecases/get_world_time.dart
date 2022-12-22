@@ -9,7 +9,7 @@ import '../../../../core/errors/failures.dart';
 class GetWorldTime implements UseCase<WorldTime,Params> {
   final GetWorldTimeRepository repository;
 
-  GetWorldTime({this.repository});
+  GetWorldTime(this.repository);
 
   @override
   Future<Either<Failures, WorldTime>> call(Params params) async {

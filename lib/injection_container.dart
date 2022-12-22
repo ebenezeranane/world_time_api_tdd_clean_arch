@@ -20,7 +20,7 @@ Future<void> init() async {
   sl.registerFactory(() => WorldTimeApiBloc(getWorldTime: sl()));
 
   //usecases
-  sl.registerLazySingleton(() => GetWorldTime());
+  sl.registerLazySingleton(() => GetWorldTime(sl()));
 
   sl.registerLazySingleton<GetWorldTimeRepository>(() =>
       GetWorldTimeRepositoryImpl(
@@ -30,9 +30,9 @@ Future<void> init() async {
 
   //Data Sources
   sl.registerLazySingleton<WorldTimeRemoteDataSource>(
-      () => WorldRemoteDataSourceImpl());
+      () => WorldRemoteDataSourceImpl(client: sl()));
   sl.registerLazySingleton<WorldTimeLocalDataSource>(
-      () => WorldTimeLocalDataSourceImpl());
+      () => WorldTimeLocalDataSourceImpl(sharedPreferences: sl()));
 
   // Core
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
@@ -42,5 +42,5 @@ Future<void> init() async {
 
   sl.registerLazySingleton(() => sharedPreference);
   sl.registerLazySingleton(() => DataConnectionChecker());
-  sl.registerLazySingleton(() => http.Client);
+  sl.registerLazySingleton(() => http.Client());
 }

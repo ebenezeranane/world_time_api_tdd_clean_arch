@@ -78,7 +78,7 @@ class DisplayTime extends StatelessWidget {
               children: <Widget>[
                 // ignore: prefer_const_constructors
                 Text(
-                  displayTime.location,
+                  displayTime.datetime.toString(),
                   style: const TextStyle(
                       fontSize: 25, letterSpacing: 2, color: Colors.grey),
                 ),
@@ -86,7 +86,7 @@ class DisplayTime extends StatelessWidget {
             ),
             const SizedBox(height: 20.0),
             Text(
-              displayTime.datetime,
+              displayTime.datetime.toString(),
               style: const TextStyle(
                   fontSize: 80, letterSpacing: 2, color: Colors.grey),
             )
