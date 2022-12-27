@@ -28,7 +28,7 @@ class WorldTimeHome extends StatelessWidget {
               builder: (BuildContext context, state) {
             if (state is Empty) {
               return Container(
-                child: Text("Empty"),
+                child: Text("Empty "),
               );
             } else if (state is Loading) {
               return Center(child: const CircularProgressIndicator());
